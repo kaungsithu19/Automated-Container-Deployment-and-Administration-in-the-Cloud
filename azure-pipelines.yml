@@ -8,9 +8,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  # Reference the variable group with AWS credentials
-  - group: 'AWS_Credentials'
-    INSTANCE_IP: '63.33.65.6'
+  # Use variable group for AWS credentials
+  group: 'AWS_Credentials'
+  # Declare other variables directly, without a dash prefix
+  INSTANCE_IP: '63.33.65.6'
   PRIVATE_KEY_PATH: 'kaungkey0'
 
 steps:
@@ -31,7 +32,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      ssh -i kaungkey0 -o "StrictHostKeyChecking=no" ubuntu@$(INSTANCE_IP) << 'EOF'
+      ssh -i $(PRIVATE_KEY_PATH) -o "StrictHostKeyChecking=no" ubuntu@$(INSTANCE_IP) << 'EOF'
         docker pull kaung/flaskapp:$(Build.BuildId)
         docker stop flask_app_container || true
         docker rm flask_app_container || true
