@@ -37,7 +37,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: your-docker-username/your-image-name:latest
+          tags: kaung19/sample_app:latest
 
       # SSH into the EC2 instance and deploy the Docker container
       - name: Deploy Docker container to EC2
@@ -48,10 +48,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             # Pull the latest Docker image
-            docker pull your-docker-username/your-image-name:latest
+            docker pull kaung19/sample_app:latest
             
             # Stop and remove the existing container, if it exists
             docker rm -f my_container || true
             
             # Run the Docker container
-            docker run -d --name my_container -p 80:80 your-docker-username/your-image-name:latest
+            docker run -d --name my_container -p 80:80 kaung19/sample_appe:latest
