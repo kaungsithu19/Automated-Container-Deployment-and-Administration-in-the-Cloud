@@ -54,4 +54,4 @@ jobs:
             docker rm -f my_container || true
             
             # Run the Docker container
-            docker run -d --name my_container -p 80:80 kaung19/sample_appe:latest
+            docker run -d --name my_container -p 80:80 kaung19/sample_app:latest
