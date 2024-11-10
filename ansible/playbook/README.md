@@ -1,65 +1,63 @@
-# Automated Installation of Docker on AWS EC2 Using Ansible
-
-This project automates the installation and configuration of Docker on an AWS EC2 instance using Ansible. The automation ensures Docker is installed, configured to start on boot, and verified post-installation.
-
-## Project Structure
-
-```
-project_root/
-├── playbook/
-│   └── Install_Docker.yml         
-└── inventory/
-    └── hosts                      
-```
-
-## Automation Flow
-
-The following steps outline the setup and execution of this automation:
-
-### Setting Up the EC2 Instance
-
-1. Launch an EC2 instance on AWS (e.g., Ubuntu 20.04 LTS).
-2. Make sure to keep the private key file used to create the instance for SSH access and Ansible connections.
-
-### Inventory File Configuration
-
-Configure the Ansible inventory file by adding the EC2 instance details, including its IP address, SSH user, and path to the private key.
-
-Example `hosts` inventory file:
-
-```ini
-[aws] 
-3.249.135.76 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/kaungkey0
-```
-
-### Ansible Playbook Structure
-
-The `Install_Docker.yml` playbook automates Docker installation and configuration in five main steps:
-
-1. **Package Update & Prerequisites**: Updates package cache and installs necessary prerequisites.
-2. **GPG Key & Docker Repository**: Adds Docker's official GPG key and repository for secure installation.
-3. **Docker Installation**: Installs the Docker Community Edition package.
-4. **Service Configuration**: Starts Docker and configures it to start on boot.
-5. **Verification**: Checks and confirms Docker installation.
-
-## Running the Playbook
-
-Execute the playbook using:
-
-```bash
-ansible-playbook -i /home/kaung/ansible/inventory/hosts /home/kaung/ansible/playbook/Install_Docker.yml
-```
-
-The playbook will connect to the specified EC2 instance, execute all tasks, and summarize the results upon completion.
-
-## Troubleshooting Connection Issues
-
-If you encounter connection errors, verify that the private key specified in the inventory file matches the one used to create the EC2 instance.
-
-## Requirements
-
-- **Ansible** installed on your local machine.
-- **AWS EC2 Instance** running Ubuntu 20.04 (or a similar Linux distribution).
-- **SSH Access** with the private key file from the original EC2 instance creation.
+Here's a straightforward README.md for the Ansible playbook that explains the automation flow in a beginner-friendly way:
 
 ---
+
+# Docker Installation and Configuration with Ansible
+
+This README explains how the Ansible playbook automates the process of installing and configuring Docker on an Ubuntu server. 
+
+## Overview
+
+This playbook is designed to:
+1. Update and upgrade apt packages on the server.
+2. Install the necessary packages and prerequisites.
+3. Add Docker’s official repository and GPG key.
+4. Install Docker.
+5. Start Docker as a service and enable it to start on boot.
+6. Verify the Docker installation and display the Docker version.
+
+The playbook uses simple and effective Ansible tasks to set up Docker on a remote Ubuntu server.
+
+## Playbook Breakdown
+
+1. **Update and Upgrade Packages**
+   - The first task updates the package cache and upgrades the installed packages. This ensures that the server is using the latest versions of the packages, making it more secure and stable.
+
+2. **Install Prerequisites**
+   - The second task installs essential tools needed to manage packages securely. These tools include:
+     - `apt-transport-https`: Allows apt to transfer files over HTTPS.
+     - `ca-certificates`: Helps verify secure connections.
+     - `curl`: A command-line tool for transferring data.
+     - `software-properties-common`: Adds the ability to manage software sources.
+
+3. **Add Docker’s GPG Key**
+   - This step adds Docker’s official GPG key to the server. The GPG key is used to verify the authenticity of packages from the Docker repository.
+
+4. **Add Docker Repository**
+   - Here, we add Docker’s official repository to the server. This allows us to download the latest Docker packages directly from Docker.
+
+5. **Install Docker**
+   - In this step, Docker itself is installed. The playbook also updates the package cache to ensure the latest version of Docker is installed.
+
+6. **Start Docker and Enable on Boot**
+   - This task ensures that Docker starts immediately and that it will start automatically whenever the server restarts.
+
+7. **Verify Docker Installation**
+   - Finally, we check that Docker was installed successfully by running `docker --version`. The playbook captures this output and displays it as a message.
+
+## Usage
+
+To run this playbook, make sure you have:
+- Ansible installed.
+- An inventory file with the server information, with `aws` as the host name.
+
+Run the playbook with:
+```bash
+ansible-playbook -i inventory_file playbook.yml
+```
+
+This command will execute each task in the playbook, setting up Docker on your server.
+
+## Conclusion
+
+This playbook provides a simple way to automate the Docker installation process using Ansible. With this setup, you can save time and ensure a consistent Docker environment on your server.
