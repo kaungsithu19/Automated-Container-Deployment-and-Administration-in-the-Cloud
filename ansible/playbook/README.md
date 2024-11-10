@@ -52,8 +52,5 @@ Run the playbook with:
 ansible-playbook -i inventory_file playbook.yml
 ```
 
-This command will execute each task in the playbook, setting up Docker on your server.
+This command will execute each task in the playbook, setting up Docker on the server.
 
-## Conclusion
-
-This playbook provides a simple way to automate the Docker installation process using Ansible. With this setup, you can save time and ensure a consistent Docker environment on your server.
