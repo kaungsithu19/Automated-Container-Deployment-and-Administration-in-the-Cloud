@@ -1,6 +1,3 @@
-Here's a README formatted for GitHub, including Markdown structure, code blocks, and clear instructions for easy readability:
-
-```markdown
 # Automated Installation of Docker on AWS EC2 Using Ansible
 
 This project automates the installation and configuration of Docker on an AWS EC2 instance using Ansible. The automation ensures Docker is installed, configured to start on boot, and verified post-installation.
