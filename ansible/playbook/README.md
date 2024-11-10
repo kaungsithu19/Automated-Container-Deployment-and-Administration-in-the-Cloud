@@ -4,13 +4,13 @@ This project automates the installation and configuration of Docker on an AWS EC
 
 ## Project Structure
 
-
+```
 project_root/
 ├── playbook/
 │   └── Install_Docker.yml         
 └── inventory/
     └── hosts                      
-
+```
 
 ## Automation Flow
 
