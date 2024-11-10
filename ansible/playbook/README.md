@@ -1,7 +1,3 @@
-Here's a straightforward README.md for the Ansible playbook that explains the automation flow in a beginner-friendly way:
-
----
-
 # Docker Installation and Configuration with Ansible
 
 This README explains how the Ansible playbook automates the process of installing and configuring Docker on an Ubuntu server. 
