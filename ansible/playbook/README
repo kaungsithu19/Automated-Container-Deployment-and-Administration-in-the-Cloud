@@ -1,0 +1,57 @@
+Automated Installation of Docker in AWS EC2 Using Ansible
+This project automates the installation and configuration of Docker on an AWS EC2 instance using Ansible. The flow of this automation ensures that Docker is installed, configured to start on boot, and that the installation of Docker is checked and confirmed. This README will provide a general overview of how the setup has been done, the structure of the playbook, and how to run this playbook.
+
+Project Structure
+
+project_root/
+├── playbook/
+│   └── Install_Docker.yml         
+└── inventory/
+    └── hosts                      
+Automation Flow
+Automation flow will be depicted by the series of steps: 
+
+Setting Up the EC2 Instance:
+----------------------------
+Launch an instance on AWS. For example, Ubuntu 20.04 LTS. 
+Make sure that you have the private key file used while creating the instance since that is required for SSH access and Ansible connections. 
+
+Inventory File Configuration
+------------------------------
+Next, configure the Ansible inventory file by adding the EC2 instance created earlier, mentioning its IP address, the SSH user, and the path to the correct private key. 
+Example inventory file named hosts 
+
+[aws] 
+3.249.135.76 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/kaungkey0 
+
+Ansible Playbook Structure
+-------------------------
+Install_Docker.yml automates the installation and configuration of Docker in five major steps: 
+Package Update & Prerequisites: Updates package cache and installs necessary prerequisites for Docker. 
+GPG Key & Docker Repository: Adds Docker's official GPG key and repository to package manager to enable secure Docker installation. 
+Docker Installation: Installs the Docker Community Edition package. 
+Service Configuration: Starts off the Docker service, and configures it to start on boot.
+Verification: A check of the installed Docker version and reports to confirm indeed the installation is successful.
+
+Run the Playbook:
+-----------------
+Run the playbook using the following command:
+
+ansible-playbook -i /home/kaung/ansible/inventory/hosts /home/kaung/ansible/playbook/Install_Docker.yml
+ 
+The playbook will connect to the specified EC2 instance, run every task listed, and then summarize the results upon completion.
+
+Troubleshooting Connection Issues:
+------------------------------
+If you encounter a connection error, then please make sure the private key in the inventory file is proper. This should be the same key that was utilized when the original creation of the EC2 instance occurred.
+
+Requirements
+------------
+Ansible installed on your localhost.
+AWS EC2 Instance: Ubuntu 20.04 or similar flavor of Linux.
+SSH Access: The private key file used when the original EC2 instance was created.
+
+Sample Output
+-------------
+ss??
+After the successful execution of this playbook, it will also show the Docker version installed on the instance, which means the installation is successful.

@@ -1,0 +1,29 @@
+- name: Deploy Docker container with flask app
+  hosts: aws
+  become: true
+
+  tasks:
+    - name: Copy application files to the server
+      copy:
+        src: "/home/kaung/ansible/playbook1/Flask/{{ item }}"
+        dest: "/home/ubuntu/{{ item }}"
+      loop:
+        - Dockerfile
+        - requirements.txt
+        - app.py
+
+    - name: Build Docker image
+      command: docker build -t flask /home/ubuntu/
+      args:
+        chdir: /home/ubuntu/
+        
+    - name: Stop and remove existing container (if exists)
+      shell: |
+        docker stop app_container || true
+        docker rm app_container || true
+      ignore_errors: yes
+
+    - name: Run Docker container
+      command: docker run -d -p 443:5000 --name app_container flask
+
+
