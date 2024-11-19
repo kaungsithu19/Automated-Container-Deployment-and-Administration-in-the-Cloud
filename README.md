@@ -1,11 +1,11 @@
 Here’s a detailed and organized `README.md` file for your project:
 
-```markdown
+
 # Automated Container Deployment and Administration in the Cloud
 
 This project demonstrates the use of automation tools to deploy a server with a Docker container running a sample application on cloud infrastructure. It integrates multiple tools, including **Terraform**, **Ansible**, **Docker**, and **GitHub Actions** for infrastructure provisioning, configuration management, and CI/CD pipeline implementation.
 
----
+```markdown
 
 ## Project Overview
 
