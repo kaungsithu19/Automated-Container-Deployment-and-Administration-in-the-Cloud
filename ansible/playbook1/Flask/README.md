@@ -130,10 +130,9 @@ if __name__ == "__main__":
 
 ## Author
 
-**Kaung Sithu**  
+**Kaung Si Thu**  
 GitHub: [kaungsithu19](https://github.com/kaungsithu19)
 
 For feedback or assistance, feel free to reach out!
-```
 
 This README explains each component of Part 3 in detail, highlights potential points of adaptation, and ensures clarity for anyone reviewing or using the project. Let me know if further modifications are needed!
