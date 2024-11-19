@@ -206,6 +206,4 @@ For questions or feedback, feel free to reach out via the **Contact** section in
 
 ---
 
-```
-
 Let me know if you need further modifications!
