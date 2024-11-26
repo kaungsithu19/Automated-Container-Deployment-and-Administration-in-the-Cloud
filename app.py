@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hello, World! This is a sample Docker app."
+    return "Hello, World! This is a Flask Docker app for Task-4."
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
